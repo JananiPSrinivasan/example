@@ -2,7 +2,6 @@
 #include <gtest/gtest.h>
 #include "math_functions.h"
 
-
 // Test cases
 TEST(MathFunctionsTest, AddTest) {
     EXPECT_EQ(add(1, 2), 3);
