@@ -1,6 +1,7 @@
 // test/main_test.cpp
 #include <gtest/gtest.h>
-#include "main.cpp"
+#include "math_functions.h"
+
 
 // Test cases
 TEST(MathFunctionsTest, AddTest) {
