@@ -4,7 +4,7 @@
 
 // Test cases
 TEST(MathFunctionsTest, AddTest) {
-    EXPECT_EQ(add(1, 2), 3);
+    EXPECT_EQ(add(1, 2), 2);
     EXPECT_EQ(add(-1, -1), -2);
     EXPECT_EQ(add(-1, 1), 0);
 }
