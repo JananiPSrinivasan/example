@@ -11,22 +11,29 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
+    - uses: actions/checkout@v3
+      with:
+        submodules: recursive
+        fetch-depth: 0
 
     - name: Install dependencies
       run: sudo apt-get install -y g++ cmake
 
-    - name: Build project
+    - name: "Create build directory and run CMake"
+      working-directory: ${{github.workspace}}
+      shell: bash
       run: |
-        mkdir -p build
-        cd build
-        cmake ..
-        make
+        mkdir build
+        cmake -S . -B build
 
-    - name: Run tests
+    - name: "run Tests"
+      working-directory: ${{github.workspace}}
+      shell: bash
+      run: cmake --build build --config Debug
+
+    - name: Run the tests
+      working-directory: ${{github.workspace}}/build
+      shell: bash
       run: |
-        cd build
-        ./your-test-executable
+        ctest
